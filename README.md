@@ -26,44 +26,6 @@ This repository houses the complete source code for a full-stack E-commerce plat
 - **React Router:** Client-side routing.
 - **SCSS:** Styling with modular and reusable styles.
 
-## Project Structure
-### Backend
-/backend
-│
-├── /src
-│ ├── /api
-│ │ ├── /controllers
-│ │ ├── /services
-│ │ ├── /routes
-│ │ ├── /interfaces
-│ │ └── /middlewares
-│ ├── /prisma
-│ ├── /utils
-│ ├── /config
-│ ├── app.ts
-│ ├── server.ts
-│ ├── index.ts
-│ └── .env
-
-
-### Frontend
-/frontend
-│
-├── /public
-├── /src
-│ ├── /assets
-│ ├── /components
-│ ├── /pages
-│ ├── /services
-│ ├── /store
-│ ├── /hooks
-│ ├── /utils
-│ ├── /styles
-│ ├── App.tsx
-│ ├── index.tsx
-│ └── /api
-
-
 ## Getting Started
 
 ### Prerequisites
