@@ -73,7 +73,7 @@ This repository houses the complete source code for a full-stack E-commerce plat
 ### Installation
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/ecommerce-platform.git
+   git clone https://github.com/AbdulWasay2568/Ecommerce-Full-Stack.git
    cd ecommerce-platform
    
 2. **Install dependencies:**
