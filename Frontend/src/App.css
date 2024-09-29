@@ -1,0 +1,510 @@
+/* #root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+*/
+.container{
+  background-color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 100%;
+  min-height: 100%;
+}
+.backGround {
+  display: flex;
+  margin: 10px;
+  gap:10px
+
+}
+.leftBar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 51%;
+}
+.navBar {
+  position: sticky;
+  background-color:#121212;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  border-radius: 10px;
+
+}
+#home,#search{
+  margin: 10px;
+  padding: 2px;
+  color: white;
+  cursor: pointer;
+}
+#search{
+  color: grey;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+}
+#search:hover{
+  color: white;
+}
+.library{
+  background-color:#121212;
+  margin: 1px;
+  display: flex;
+  flex-direction: column;
+  /* padding: 2px; */
+  justify-content: space-between;
+  border-radius: 10px;    
+}
+.songLibrary {
+  display: flex;
+  justify-content: space-between;
+}
+#yourLibrary,#plus{
+  margin: 10px;
+  padding: 2px;
+  color: grey;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+}
+#yourLibrary:hover{
+  color: white;
+}
+
+#plus{
+  background-color: transparent; 
+  border: none;
+  width: 40px; 
+  font-size: xx-large;
+  font-weight: normal;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 20px;
+}
+
+#plus:hover {
+  color: white;
+  background-color: rgb(34, 52, 52);
+}
+
+.artistsButton {
+  position: sticky;
+  margin: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  gap: 10px;
+}
+#playLists,#artists{
+  border-radius: 20px;
+  background-color: rgb(34, 52, 52);
+  border: none;
+  color: white;
+  height: 2rem;
+  width: 4.5rem;
+
+}
+.recents {
+  display: flex;
+  justify-content: space-between;
+}
+#search,#recents{
+  margin: 10px;
+  padding: 2px;
+  color: grey;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+#recents:hover{
+  color: white;
+}
+.songsPlayListContainer {
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  justify-content: left;
+  flex-direction: column;
+  gap: 5px;
+
+  cursor: pointer;
+  transition: color 0.3s ease;
+
+}
+.songsPlayListContainer :hover{
+  background-color: rgb(34, 52, 52);
+  border-radius: 5px;
+
+}
+#songsPlayList {
+  /* margin: 1px; */
+  display: flex;
+  padding: 6px;
+
+  max-width: 100%;
+}
+
+#songsPlayList img{
+  height: 55px;
+  width: auto;
+  border-radius: 5px;
+  /* object-fit: cover; Ensures images fill their containers properly */
+}
+
+.songPlayListPic {
+  margin: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px;
+}
+.songPlayListDescription {
+  margin: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 2px;
+}
+#playListName,#playListDescription{
+  margin: 1px;
+  padding: 2px;
+  align-items: center;
+  width: 100%;
+  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#playListNames{
+  margin: 1px;
+  padding: 2px;
+  align-items: center;
+  width: 130px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#playListDescription{
+  font-size: small;
+  color: grey;
+  font-weight: 500;
+}
+
+.main {
+  width: 100%;
+  background-color:#121212;
+
+  border-radius: 10px;
+  /* margin: 10px; */
+  /* padding: 2px; */
+  display: flex;
+  flex-direction: column;
+}
+.topContainer{
+  margin: 10px;
+  padding: 2px;
+  flex-direction: row;
+  display: flex;
+  /* justify-content: space-between; */
+  justify-content: space-between;
+}
+.GSButtonsContainer {
+
+}
+
+.profileContainer{
+
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  /* height: 150%; */
+  justify-content: right;
+  gap: 2%;
+
+}
+
+#explorePremium{
+  border-radius: 20px;
+  background-color: white;
+  color: black;
+  height: 2rem;
+  width: 9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+#installApp{
+  border-radius: 20px;
+  background-color: black;
+  border: none;
+  color: white;
+  height: 2rem;
+  width: 7rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+#smallerButton,#greaterButton,#bellIcon,#profile{
+  border-radius: 100%;
+  background-color: black;
+  border: none;
+  color: white;
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+
+.category {
+  justify-content: left;
+  align-items: left;
+  display: flex;
+  margin: 10px;
+  padding: 2px;
+  gap: 1%;
+}
+#all{
+  border-radius: 15px;
+  background-color: white;
+  color: black;
+  height: 2rem;
+  width: 2.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+}
+#music{
+  border-radius: 20px;
+  /* background-color: black; */
+  background-color: rgb(34, 52, 52);
+  border: none;
+  color: white;
+  height: 2rem;
+  width: 4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.songs {
+  justify-content: left;
+  align-items: left;
+  flex-direction: column;
+  display: flex;
+  margin: 10px;
+  padding: 2px;
+  gap: 50px;
+}
+.recentlyPlayed {
+  color: white;
+  justify-content: left;
+  justify-content: space-around;
+  align-items: left;
+  flex-direction: column;
+  display: flex;
+  padding: 2px;
+}
+
+#recentlyPlayed{
+  color: white;
+  font-size: x-large;
+  font-weight: 700
+
+}
+
+.songsList,.madeForClient,.yourTopMixes{
+  color: white;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  align-items: center;
+  margin-top: 20px;
+  padding: 2px;
+  justify-content: space-between;
+  /* gap: 18px; */
+
+}
+
+.songNumber{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  height: 220px;
+
+
+
+}
+
+.songNumber img{
+
+  border-radius: 5px;
+  height: 130px;
+  width: 140px;
+  /* object-fit: cover; */
+
+}
+
+.songNumber:hover{
+  background-color: rgb(34, 52, 52);
+  border-radius: 5px;
+}
+
+.songDescription{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+#singersName{
+  color: grey;
+  font-size: medium;
+  font-weight: 400;
+
+}
+
+.aboutUsContainer {
+  flex-direction: column;
+  display: flex;
+  justify-content: left;
+  justify-content: space-around;
+  align-items: left;
+  margin: 10px;
+  padding: 2px;
+}
+.aboutUs {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 2px;
+}
+
+
+/* Footer Controls */
+.controlsContainer {
+  background-color:black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  position: sticky;
+  bottom: 0;
+  color: #b3b3b3;
+}
+
+.emptyContainer {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  
+
+  margin: 10px;
+  justify-content: space-between;
+  justify-content: left;
+  gap: 5px;
+
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.emptyContainer img {
+  height: 55px;
+  width: auto;
+  border-radius: 5px;
+}
+.songInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+  gap: 2px;
+
+}
+
+#masterSongName{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  font-size: small;
+}
+#masterArtists{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: grey;
+  font-size: small;
+}
+
+#masterArtists:hover{
+  color: white;
+}
+
+.playBack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+}
+
+.playBackButtons {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;    
+  margin-bottom: 10px;
+  gap: 20%;
+}
+
+.playBackButtons i {
+  cursor: pointer;
+  transition: color 0.3s ease;
+  /* justify-content: space-between; */
+
+}
+
+.playBackButtons i:hover {
+
+  color: white;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+      /* justify-content: space-between; */
+
+}
+
+.progressBar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#Progressbar {
+  width: 80%;
+  height: 5px;
+  background-color: #b3b3b3;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#Progressbar:hover {
+  background-color: #1DB954;
+}
+
+.optionsContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+}
+

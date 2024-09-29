@@ -55,6 +55,9 @@ model Cart {
   User        User     @relation(fields: [userID], references: [userID], onDelete: Cascade)
   Product     Product? @relation(fields: [productID], references: [productID])
   Payment     Payment[]
+
+  // Composite unique constraint on userID and productID
+  @@unique([userID, productID])
 }
 
 model Payment {

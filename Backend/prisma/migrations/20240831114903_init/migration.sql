@@ -35,8 +35,8 @@ CREATE TABLE "Product" (
     "name" TEXT NOT NULL,
     "description" TEXT,
     "price" DOUBLE PRECISION NOT NULL,
-    "stock" INTEGER NOT NULL,
-    "image_url" TEXT,
+    "stock" INTEGER,
+    "image_url" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("productID")
@@ -46,7 +46,7 @@ CREATE TABLE "Product" (
 CREATE TABLE "Cart" (
     "cartID" SERIAL NOT NULL,
     "userID" INTEGER NOT NULL,
-    "productID" INTEGER,
+    "productID" INTEGER NOT NULL,
     "quantity" INTEGER NOT NULL,
     "total_amount" DOUBLE PRECISION NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -114,7 +114,7 @@ ALTER TABLE "Product" ADD CONSTRAINT "Product_categoryID_fkey" FOREIGN KEY ("cat
 ALTER TABLE "Cart" ADD CONSTRAINT "Cart_userID_fkey" FOREIGN KEY ("userID") REFERENCES "User"("userID") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Cart" ADD CONSTRAINT "Cart_productID_fkey" FOREIGN KEY ("productID") REFERENCES "Product"("productID") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Cart" ADD CONSTRAINT "Cart_productID_fkey" FOREIGN KEY ("productID") REFERENCES "Product"("productID") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Payment" ADD CONSTRAINT "Payment_cartID_fkey" FOREIGN KEY ("cartID") REFERENCES "Cart"("cartID") ON DELETE CASCADE ON UPDATE CASCADE;

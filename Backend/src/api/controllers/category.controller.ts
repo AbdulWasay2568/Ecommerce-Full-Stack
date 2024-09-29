@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { fetchCategories, createCategory, readCategory, updateCategory, deleteCategory } from "../services/category.service";
 import { CreateCategoryDto, UpdateCategoryDto } from "../interfaces/category.interface";
+// import { fetchProductsByCategory } from ''
 
 export const fetchCategoriesController = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -55,3 +56,13 @@ export const deleteCategoryController = async (req: Request, res: Response): Pro
         res.status(500).json({ error: "Failed to delete category" });
     }
 };
+
+// export const fetchProductsByCategoryController = async (req: Request, res: Response): Promise<void> => {
+//     try {
+//         const { category } = req.params;
+//         const products = await fetchProductsByCategory(category);
+//         res.status(200).json(products);
+//     } catch (error) {
+//         res.status(500).json({ error: "Failed to fetch products by category" });
+//     }
+// };

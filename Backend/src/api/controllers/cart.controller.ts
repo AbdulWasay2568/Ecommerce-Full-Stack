@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { fetchCarts, createCart, readCart, updateCart, deleteCart } from "../services/cart.service";
+import { fetchCarts, createCart, readCart, updateCart, deleteCart, fetchCartsByUser } from "../services/cart.service";
 import { CreateCartDto, UpdateCartDto } from "../interfaces/cart.interface";
 
 export const fetchCartsController = async (req: Request, res: Response): Promise<void> => {
@@ -55,3 +55,36 @@ export const deleteCartController = async (req: Request, res: Response): Promise
         res.status(500).json({ error: "Failed to delete cart" });
     }
 };
+
+
+export const fetchCartByUserController = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { userID } = req.params;
+        console.log("Fetching cart for User ID:", userID);
+
+        if (!userID) {
+            res.status(400).json({ error: "User ID is required" });
+            return;
+        }
+
+        const userCart = await fetchCartsByUser(Number(userID));
+        console.log("Fetched User Cart:", userCart);
+
+        if (userCart.length > 0) {
+            res.status(200).json(userCart);
+        } else {
+            res.status(404).json({ error: "Cart is empty" });
+        }
+    } catch (error) {
+        console.error("Error in fetching user's cart:", error);
+
+        // TypeScript safe way to access error properties
+        if (error instanceof Error) {
+            res.status(500).json({ error: "Failed to fetch user's cart", details: error.message });
+        } else {
+            res.status(500).json({ error: "Failed to fetch user's cart" });
+        }
+    }
+};
+
+
