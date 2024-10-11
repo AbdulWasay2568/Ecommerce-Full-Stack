@@ -10,7 +10,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ totalPrice, totalCount }) =
   const navigate = useNavigate(); 
 
   return (
-    <div className="w-96 p-4 bg-white border border-gray-200 rounded-lg shadow-md text-sm">
+    <div className="w-80 p-4 bg-white border border-gray-200 rounded-lg shadow-md text-sm">
         <h3 className="text-xl font-bold text-gray-800">Order Summary</h3>
         <p className="flex justify-between mt-2 text-gray-700">
         <span>Subtotal</span>

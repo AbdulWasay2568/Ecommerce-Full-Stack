@@ -1,5 +1,5 @@
 import { apiClient } from './axios';
-import { CreateCartDto, UpdateCartDto } from '../interfaces/cart.interface.ts'; // Adjust the import path as necessary
+import { CreateCartDto, UpdateCartDto } from '../interfaces/cart.interface.ts'; 
 
 export const fetchCartItems = async (userID: number) => {
   try {
@@ -39,7 +39,7 @@ export const removeCartItem = async (cartID: number) => {
 // Fetching cart by user ID
 export const fetchCartByUser = async (userID: number) => {
   try {
-    const response = await apiClient.get(`/carts/user/${userID}`); // Adjust the endpoint as needed
+    const response = await apiClient.get(`/carts/user/${userID}`); 
     return response.data;
   } catch (error) {
     console.error("Error fetching cart:", error);

@@ -1,42 +1,41 @@
 import { useState, useEffect } from 'react';
 import OrderSummary from './OrderSummary';
 import { fetchCartByUser, removeCartItem } from '../services/cartService';
+import { CartData } from '../interfaces/cart.interface';
 
-interface ItemData {
-  id: number;
-  productID: number;
-  Product: {
-    name: string;
-    image_url: string;
-    price: number;
-  };
-  quantity: number;
-  total_amount: number;
-}
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState<ItemData[]>([]);
+  const [cartItems, setCartItems] = useState<CartData[]>([]);
   const [counts, setCounts] = useState<number[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
   const [totalCount, setTotalCount] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const userID = 1; // Simulating logged-in userID
 
-  // Fetch cart items for the user
+  const userID = localStorage.getItem('userID');
+
   useEffect(() => {
+    if (!userID) {
+      setErrorMessage('User is not logged in');
+      setLoading(false);
+      return;
+    }
+
     const fetchCart = async () => {
       setLoading(true);
       try {
-        const fetchedItems = await fetchCartByUser(userID);
+        const fetchedItems = await fetchCartByUser(Number(userID)); 
         if (Array.isArray(fetchedItems)) {
           setCartItems(fetchedItems);
           setCounts(fetchedItems.map(item => item.quantity || 0));
         } else {
-          console.error("Fetched item is not in the expected format:", fetchedItems);
+          console.error("Fetched items are not in the expected format:", fetchedItems);
+          setErrorMessage('Failed to load cart items.');
         }
       } catch (error) {
         console.error("Error fetching cart items:", error);
+        setErrorMessage('Error fetching cart items.');
       } finally {
         setLoading(false);
       }
@@ -45,7 +44,6 @@ const Cart = () => {
     fetchCart();
   }, [userID]);
 
-  // Increment item quantity
   const handleIncrement = (index: number) => {
     setCounts(prevCounts => {
       const newCounts = [...prevCounts];
@@ -54,7 +52,6 @@ const Cart = () => {
     });
   };
 
-  // Decrement item quantity
   const handleDecrement = (index: number) => {
     setCounts(prevCounts => {
       const newCounts = [...prevCounts];
@@ -65,7 +62,6 @@ const Cart = () => {
     });
   };
 
-  // Remove item from cart
   const handleRemoveItem = async (id: number) => {
     try {
       await removeCartItem(id);
@@ -73,10 +69,10 @@ const Cart = () => {
       setCounts(prevCounts => prevCounts.filter((_, i) => cartItems[i]?.id !== id));
     } catch (error) {
       console.error("Error removing cart item:", error);
+      setErrorMessage('Error removing item from cart.');
     }
   };
 
-  // Recalculate total price and total count when items or counts change
   useEffect(() => {
     const calculateTotalPrice = () => {
       let total = 0;
@@ -90,11 +86,17 @@ const Cart = () => {
       setTotalCount(count);
     };
 
-    calculateTotalPrice();
+    if (cartItems.length > 0) {
+      calculateTotalPrice();
+    }
   }, [counts, cartItems]);
 
   if (loading) {
     return <div>Loading...</div>;
+  }
+
+  if (errorMessage) {
+    return <div>{errorMessage}</div>;
   }
 
   return (
@@ -103,7 +105,6 @@ const Cart = () => {
         <div className="w-full bg-white rounded-lg shadow-md">
           <div className="flex justify-between p-4 border-b border-gray-300 bg-gray-50 rounded-t-lg">
             <h2 className="text-2xl font-bold text-gray-800">Shopping Cart</h2>
-            <button className="text-red-500 hover:text-red-700 font-semibold">DELETE</button>
           </div>
 
           <div className="max-h-96 overflow-y-auto">

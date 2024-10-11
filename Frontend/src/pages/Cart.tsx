@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import CartItem from '../components/CartItem';
+import CartItem from '../components/Cart';
 import { fetchCartItems, removeCartItem } from '../services/cartService';
 
 interface CartItem {
@@ -14,7 +14,6 @@ const Cart = () => {
 
   // Replace this with the actual userID from your authentication state or context
   const userID = 1;
-
   useEffect(() => {
     const getCartItems = async () => {
       try {

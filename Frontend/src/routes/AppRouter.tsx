@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import Checkout from '../pages/Checkout';
 // import Orders from '../pages/Orders';
 import Main from '../components/Home';
-import Cart from '../components/CartItem'
+import Cart from '../components/Cart'
 
 const AppRouter = () => {
     return (

@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 import cors from 'cors'; // Import CORS middleware
 
 // Import route modules
-import { userRouter, categoryRouter, productRouter, cartRouter, paymentRouter, orderRouter, shippingInfoRouter, productReviewRouter } from './api/routes';
+import {authRoutes, userRouter, categoryRouter, productRouter, cartRouter, paymentRouter, orderRouter, shippingInfoRouter, productReviewRouter } from './api/routes';
 
 // Load environment variables from .env file
 dotenv.config({ path: '.env' });
@@ -33,6 +33,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Define the API routes
+
+app.use('/auth', authRoutes);
 app.use('/users', userRouter);
 app.use('/categories', categoryRouter);
 app.use('/products', productRouter);

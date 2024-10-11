@@ -74,11 +74,6 @@ export const deleteCart = async (cartID: number): Promise<void> => {
 // Fetch carts by user ID
 export const fetchCartsByUser = async (userID: number): Promise<Cart[]> => {
     try {
-        // Log the raw SQL query to debug
-        // const rawQueryResult = await prismaClient.$queryRaw`SELECT * FROM "Cart" WHERE "userID" = ${userID}`;
-        // console.log("Raw SQL Query Result:", rawQueryResult);
-
-        // Continue with the Prisma query
         return await prismaClient.cart.findMany({
             where: { userID: userID },
             include: {
@@ -94,6 +89,6 @@ export const fetchCartsByUser = async (userID: number): Promise<Cart[]> => {
         });
     } catch (error) {
         console.error("Error in fetchCartsByUser:", error);
-        throw error; // Propagate the error to handle it in the controller
+        throw error; 
     }
 };

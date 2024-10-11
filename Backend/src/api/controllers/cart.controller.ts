@@ -78,7 +78,6 @@ export const fetchCartByUserController = async (req: Request, res: Response): Pr
     } catch (error) {
         console.error("Error in fetching user's cart:", error);
 
-        // TypeScript safe way to access error properties
         if (error instanceof Error) {
             res.status(500).json({ error: "Failed to fetch user's cart", details: error.message });
         } else {

@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { fetchCategories, createCategory, readCategory, updateCategory, deleteCategory } from "../services/category.service";
 import { CreateCategoryDto, UpdateCategoryDto } from "../interfaces/category.interface";
-// import { fetchProductsByCategory } from ''
 
 export const fetchCategoriesController = async (req: Request, res: Response): Promise<void> => {
     try {

@@ -13,3 +13,15 @@ export interface UpdateCartDto {
     total_amount?: number;
     created_at?: Date;
 }
+
+export interface CartData {
+    id: number;
+    productID: number;
+    Product: {
+      name: string;
+      image_url: string;
+      price: number;
+    };
+    quantity: number;
+    total_amount: number;
+  }
